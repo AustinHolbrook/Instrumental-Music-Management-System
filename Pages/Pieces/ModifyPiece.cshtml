@@ -1,0 +1,86 @@
+﻿@page
+@model _2021IMMS.Pages.Pieces.ModifyPieceModel
+@{
+    ViewData["Title"] = "ModifyPiece";
+}
+
+<body>
+    <form method="post">
+        <input asp-for="Piece.PieceId" type="hidden" />
+        <div class="container jumbotron">
+            <table>
+                <tr>
+                    <td>
+                        <label asp-for="Piece.Type" class="label-formview"></label>
+                    </td>
+                    <td>
+                        <select asp-for="Piece.Type" class="dropdown-formview">
+                            <option label="Select an option"></option>
+                            <option value="P">Pep</option>
+                            <option value="C">Concert</option>
+                            <option value="J">Jazz</option>
+                            <option value="O">Orchestra</option>
+                        </select>
+                        <span asp-validation-for="Piece.Type" class="text-danger" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label asp-for="Piece.Title" class="label-formview"></label>
+                    </td>
+                    <td>
+                        <input asp-for="Piece.Title" />
+                        <span asp-validation-for="Piece.Title" class="text-danger"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label asp-for="Piece.Arranger" class="label-formview"></label></td>
+                    <td>
+                        <input asp-for="Piece.Arranger" />
+                        <span asp-validation-for="Piece.Arranger" class="text-danger"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label asp-for="Piece.Composer" class="label-formview"></label></td>
+                    <td>
+                        <input asp-for="Piece.Composer" />
+                        <span asp-validation-for="Piece.Composer" class="text-danger"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label asp-for="Piece.Remark" class="label-formview"></label></td>
+                    <td>
+                        <input asp-for="Piece.Remark" />
+                        <span asp-validation-for="Piece.Remark" class="text-danger"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label asp-for="Piece.DateLastPlayed" class="label-formview"></label></td>
+                    <td>
+                        <input asp-for="Piece.DateLastPlayed" type="date" />
+                        <span asp-validation-for="Piece.DateLastPlayed" class="text-danger"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label asp-for="Piece.TimesPerformed" class="label-formview"></label>
+                    </td>
+                    <td>
+                        <input asp-for="Piece.TimesPerformed" type="text" />
+                        <span asp-validation-for="Piece.TimesPerformed" class="text-danger" />
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <input asp-page-handler="Modify" class="btn btn-accessory" type="submit" value="Modify" />
+                        <input asp-page-handler="Cancel" class="btn btn-red" type="submit" value="Cancel" formnovalidate />
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </form>
+</body>
+@section Scripts{
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

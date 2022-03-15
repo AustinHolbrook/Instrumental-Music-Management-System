@@ -1,0 +1,62 @@
+﻿@page
+@model _2021IMMS.Pages.RentalAgreements.MaintainRentalAgreementModel
+
+@{
+    ViewData["Title"] = "MaintainRentalAgreement";
+}
+
+<body>
+    <form method="post">
+        <div class="container jumbotron">
+            <table>
+                <tr>
+                    <td>
+                        <label style="font-weight:bold">Filter by Student: </label>
+                        <select asp-for="StudentId" asp-items="@Model.StudentSelectList" class="dropdown-formview">
+                            <option value="0">All</option>
+                        </select>
+                        <input asp-page-handler="Filter" type="submit" value="Filter" class="btn btn-accessory" />
+                    </td>
+                    <div style="float: right">
+                        <input asp-page-handler="UnsignedFilter" type="submit" value="Show Incomplete" class="btn btn-primary" />
+                        <input asp-page-handler="ClearFilter" type="submit" value="Clear Filter" class="btn btn-primary"/>
+                    </div>
+                </tr>
+            </table>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            <p>
+                                <a asp-page="/RentalAgreements/AddRentalAgreement" class="btn btn-accessory">Add</a>
+                            </p>
+                        </th>
+                        <th><label asp-for="@Model.JoinResultIList[0].Student"></label></th>
+                        <th><label asp-for="@Model.JoinResultIList[0].Instrument">Instrument</label></th>
+                        <th><label asp-for="@Model.JoinResultIList[0].SerialNumber">Serial Number</label></th>
+                        <th><label asp-for="@Model.JoinResultIList[0].RenterSignature">Renter Signature</label></th>
+                        <th><label asp-for="@Model.JoinResultIList[0].FacultySignature">Faculty Signature</label></th>
+                        <th><label asp-for="@Model.JoinResultIList[0].Date"></label></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.JoinResultIList)
+                    {
+                        <tr>
+                            <td>
+                                <a asp-page="/RentalAgreements/ModifyRentalAgreement" asp-route-intRentalAgreementId="@item.RentalAgreementId" class="btn btn-accessory">Modify</a>
+                                <a asp-page="/RentalAgreements/DeleteRentalAgreement" asp-route-intRentalAgreementId="@item.RentalAgreementId" onclick="return confirm('Are you sure you want to delete this item? Click OK to delete it. Click Cancel to keep it.')" class="btn btn-red">Delete</a>
+                            </td>
+                            <td><label>@item.Student</label></td>
+                            <td><label>@item.Instrument </label></td>
+                            <td><label>@item.SerialNumber</label></td>
+                            <td><label>@item.RenterSignature</label></td>
+                            <td><label>@item.FacultySignature</label></td>
+                            <td><label>@item.Date.ToString("MM/dd/yyyy")</label></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </form>
+</body>

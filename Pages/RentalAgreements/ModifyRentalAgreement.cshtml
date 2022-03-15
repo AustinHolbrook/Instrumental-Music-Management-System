@@ -1,0 +1,105 @@
+﻿@page
+@model _2021IMMS.Pages.RentalAgreements.ModifyRentalAgreementModel
+@{
+    ViewData["Title"] = "ModifyRentalAgreement";
+}
+
+<body>
+    <form method="post">
+        <input asp-for="RentalAgreement.RentalAgreementId" type="hidden" />
+        <div class="container jumbotron">
+            <div style="margin-left: auto; margin-right: auto; text-align: center;">
+                <img src="~/images/FCB Logo.png" height="135" width="135" /><br /><br />
+                <h4>Franklin College</h4>
+                <h2 style="text-decoration: underline;">Instrument Rental Contract</h2><br /><br />
+            </div>
+            <table>
+                <tr>
+                    <td><label asp-for="RentalAgreement.StudentId" class="label-formview">Student Name: </label></td>
+                    <td>
+                        <label style="font-weight:bold">@Model.JoinResultIList[0].Student</label>
+                        <input asp-for="RentalAgreement.StudentId" type="hidden" />
+                    </td>
+                </tr>
+                <tr>
+                    <td><label asp-for="RentalAgreement.InstrumentId" class="label-formview">Instrument (Serial Number): &nbsp; </label></td>
+                    <td>
+                        <label style="font-weight:bold"> @Model.JoinResultIList[0].Instrument (@Model.JoinResultIList[0].SerialNumber)</label>
+                        <input asp-for="RentalAgreement.InstrumentId" type="hidden" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label style="font-weight:bold">Brand:</label>
+                    </td>
+                    <td>
+                        <label style="font-weight:bold">@Model.JoinResultIList[0].Brand</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label style="font-weight:bold">Additional Parts:</label>
+                    </td>
+                    <td>
+                        <label style="font-weight:bold">@Model.JoinResultIList[0].AdditionalParts</label>
+                    </td>
+                </tr>
+            </table>
+            <br />
+            <br />
+            <h5>
+
+                Conditions for Renting a Franklin College Instrument:<br /><br />
+
+                I.	College owned instruments will be rented only with the consent of the
+                Director of Instrumental Music.<br /><br />
+
+                II.	Renter will maintain instruments in good playing condition.<br /><br />
+
+                III.	Renter agrees to compensate Franklin College for loss of the
+                instrument, or any damage to the instrument deemed significant by
+                Franklin College (normal wear will not be considered significant
+                damage).<br /><br />
+
+                IV.   	Renter will allow no other person or organization to use this instrument.<br /><br />
+
+                V.  	Renter will surrender the instrument to Franklin College upon request when any
+                of the conditions of this agreement have been violated.<br /><br />
+
+                I agree to the above conditions:<br /><br />
+            </h5>
+            <table>
+                <tr>
+                    <td><label asp-for="RentalAgreement.RenterSignature" class="label-formview"></label></td>
+                    <td>
+                        <input asp-for="RentalAgreement.RenterSignature" disabled="disabled" />
+                        <input asp-for="RentalAgreement.RenterSignature" hidden="hidden" />
+                    </td>
+                </tr>
+                <tr>
+                    <td><label asp-for="RentalAgreement.FacultySignature" class="label-formview"></label></td>
+                    <td>
+                        <input asp-for="FacultySignature" disabled="disabled" />
+                    </td>
+                </tr>
+                <tr>
+                    <td><label asp-for="RentalAgreement.Date" class="label-formview"></label></td>
+                    <td>
+                        <input asp-for="RentalAgreement.Date" type="date" disabled="disabled" />
+                        <input asp-for="RentalAgreement.Date" hidden="hidden" />
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <input asp-page-handler="Modify" class="btn btn-accessory" type="submit" value="Sign" />
+                        <input asp-page-handler="Cancel" class="btn btn-red" type="submit" value="Cancel" formnovalidate />
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </form>
+</body>
+@section Scripts{
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

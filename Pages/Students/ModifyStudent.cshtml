@@ -1,0 +1,157 @@
+﻿@page
+@model _2021IMMS.Pages.Students.ModifyStudentModel
+@{
+    ViewData["Title"] = "ModifyStudent";
+}
+
+<body>
+    <form method="post">
+        <input asp-for="Student.StudentId" type="hidden" />
+        <div class="container jumbotron">
+            <table>
+                <tr>
+                    <td><label asp-for="Student.FirstName" class="label-formview"></label></td>
+                    <td>
+                        <input asp-for="Student.FirstName" />
+                        <span asp-validation-for="Student.FirstName" class="text-danger"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label asp-for="Student.MiddleInitial" class="label-formview"></label>
+                    </td>
+                    <td>
+                        <input asp-for="Student.MiddleInitial" />
+                        <span asp-validation-for="Student.MiddleInitial" class="text-danger"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label asp-for="Student.LastName" class="label-formview"></label></td>
+                    <td>
+                        <input asp-for="Student.LastName" />
+                        <span asp-validation-for="Student.LastName" class="text-danger"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label asp-for="Student.Address" class="label-formview"></label>
+                    </td>
+                    <td>
+                        <input asp-for="Student.Address" />
+                        <span asp-validation-for="Student.Address" class="text-danger"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label asp-for="Student.City" class="label-formview"></label>
+                    </td>
+                    <td>
+                        <input asp-for="Student.City" />
+                        <span asp-validation-for="Student.City" class="text-danger"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label asp-for="Student.State" class="label-formview"></label>
+                    </td>
+                    <td>
+                        <select asp-for="Student.State" id="selState" class="dropdown-formview">
+                            <option label="Select an option"></option>
+                            <option Value="AL">Alabama</option>
+                            <option Value="AK">Alaska</option>
+                            <option Value="AZ">Arizona</option>
+                            <option Value="AR">Arkansas</option>
+                            <option Value="CA">California</option>
+                            <option Value="CO">Colorado</option>
+                            <option Value="CT">Connecticut</option>
+                            <option Value="DC">District of Columbia</option>
+                            <option Value="DE">Delaware</option>
+                            <option Value="FL">Florida</option>
+                            <option Value="GA">Georgia</option>
+                            <option Value="HI">Hawaii</option>
+                            <option Value="ID">Idaho</option>
+                            <option Value="IL">Illinois</option>
+                            <option Value="IN">Indiana</option>
+                            <option Value="IA">Iowa</option>
+                            <option Value="KS">Kansas</option>
+                            <option Value="KY">Kentucky</option>
+                            <option Value="LA">Louisiana</option>
+                            <option Value="ME">Maine</option>
+                            <option Value="MD">Maryland</option>
+                            <option Value="MA">Massachusetts</option>
+                            <option Value="MI">Michigan</option>
+                            <option Value="MN">Minnesota</option>
+                            <option Value="MS">Mississippi</option>
+                            <option Value="MO">Missouri</option>
+                            <option Value="MT">Montana</option>
+                            <option Value="NE">Nebraska</option>
+                            <option Value="NV">Nevada</option>
+                            <option Value="NH">New Hampshire</option>
+                            <option Value="NJ">New Jersey</option>
+                            <option Value="NM">New Mexico</option>
+                            <option Value="NY">New York</option>
+                            <option Value="NC">North Carolina</option>
+                            <option Value="ND">North Dakota</option>
+                            <option Value="OH">Ohio</option>
+                            <option Value="OK">Oklahoma</option>
+                            <option Value="OR">Oregon</option>
+                            <option Value="PA">Pennsylvania</option>
+                            <option Value="RI">Rhode Island</option>
+                            <option Value="SC">South Carolina</option>
+                            <option Value="SD">South Dakota</option>
+                            <option Value="TN">Tennessee</option>
+                            <option Value="TX">Texas</option>
+                            <option Value="UT">Utah</option>
+                            <option Value="VT">Vermont</option>
+                            <option Value="VA">Virginia</option>
+                            <option Value="WA">Washington</option>
+                            <option Value="WV">West Virginia</option>
+                            <option Value="WI">Wisconsin</option>
+                            <option Value="WY">Wyoming</option>
+                        </select>
+                        <span asp-validation-for="Student.State" class="text-danger" />
+                    </td>
+                </tr>
+                <tr>
+                    <td><label asp-for="Student.ZipCode" class="label-formview"></label></td>
+                    <td>
+                        <input asp-for="Student.ZipCode" />
+                        <span asp-validation-for="Student.ZipCode" class="text-danger"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label asp-for="Student.Phone" class="label-formview"></label></td>
+                    <td>
+                        <input asp-for="Student.Phone" />
+                        <span asp-validation-for="Student.Phone" class="text-danger"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label asp-for="Student.EmailAddress" class="label-formview"></label></td>
+                    <td>
+                        <input asp-for="Student.EmailAddress" />
+                        <span asp-validation-for="Student.EmailAddress" class="text-danger"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label asp-for="Student.Password" class="label-formview"></label></td>
+                    <td>
+                        <input asp-for="Student.Password" />
+                        <span asp-validation-for="Student.Password" class="text-danger"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <input asp-page-handler="Modify" class="btn btn-accessory" type="submit" value="Modify" />
+                        <input asp-page-handler="Cancel" class="btn btn-red" type="submit" value="Cancel" formnovalidate />
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </form>
+</body>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,82 @@
+﻿@page
+@model _2021IMMS.Pages.Administrators.AddAdministratorModel
+
+@{
+    ViewData["Title"] = "AddAdministrator";
+}
+
+<body>
+    <form method="post">
+        <div class="container jumbotron">
+            <table>
+                <tr>
+                    <td><label asp-for="Administrator.FirstName" class="label-formview"></label></td>
+                    <td>
+                        <input asp-for="Administrator.FirstName"/>
+                        <span asp-validation-for="Administrator.FirstName" class="text-danger"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label asp-for="Administrator.MiddleInitial" class="label-formview"></label>
+                    </td>
+                    <td>
+                        <input asp-for="Administrator.MiddleInitial"/>
+                        <span asp-validation-for="Administrator.MiddleInitial" class="text-danger"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label asp-for="Administrator.LastName" class="label-formview"></label></td>
+                    <td>
+                        <input asp-for="Administrator.LastName"/>
+                        <span asp-validation-for="Administrator.LastName" class="text-danger"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label asp-for="Administrator.Phone" class="label-formview"></label></td>
+                    <td>
+                        <input asp-for="Administrator.Phone"/>
+                        <span asp-validation-for="Administrator.Phone" class="text-danger"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label asp-for="Administrator.EmailAddress" class="label-formview"></label></td>
+                    <td>
+                        <input asp-for="Administrator.EmailAddress"/>
+                        <span asp-validation-for="Administrator.EmailAddress" class="text-danger"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label asp-for="Administrator.Password" class="label-formview"></label></td>
+                    <td>
+                        <input asp-for="Administrator.Password"/>
+                        <span asp-validation-for="Administrator.Password" class="text-danger"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label asp-for="Administrator.Status" class="label-formview"></label>
+                    </td>
+                    <td>
+                        <select asp-for="Administrator.Status" class="dropdown-formview">
+                            <option label="Select an option"></option>
+                            <option value="F">Faculty</option>
+                            <option value="S">Student Worker</option>
+                        </select>
+                        <span asp-validation-for="Administrator.Status" class="text-danger"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <input asp-page-handler="Add" class="btn btn-accessory" type="submit" value="Add" />
+                        <input asp-page-handler="Cancel" class="btn btn-red" type="submit" value="Cancel" formnovalidate />
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </form>
+</body>
+@section Scripts{
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

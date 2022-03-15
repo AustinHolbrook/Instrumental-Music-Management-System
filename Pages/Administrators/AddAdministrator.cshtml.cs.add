@@ -1,0 +1,72 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using _2021IMMS.Models;
+using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
+
+namespace _2021IMMS.Pages.Administrators
+{
+    [BindProperties]
+    public class AddAdministratorModel : PageModel
+    {
+        private readonly _2021IMMS.Models._2021IMMSContext IMMSContext;
+
+        public AddAdministratorModel(_2021IMMS.Models._2021IMMSContext IMMSC)
+        {
+            IMMSContext = IMMSC;
+        }
+
+        public void OnGet()
+        {
+            //Initialize the header data.
+            ViewData["Page"] = "Maintain Administrator";
+            ViewData["Status"] = HttpContext.Session.GetString("Status");
+            ViewData["User"] = HttpContext.Session.GetString("User");
+            ViewData["MessageColor"] = HttpContext.Session.GetString("MessageColor");
+            ViewData["Message"] = "Please enter the information below and click Add.";
+        }
+
+        // Create a new Administrator.
+        public Administrator Administrator { get; set; }
+
+
+        public async Task<RedirectResult> OnPostAddAsync()
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    // Try to add the administrator to the database.
+                    IMMSContext.Administrator.Add(Administrator);
+                    await IMMSContext.SaveChangesAsync();
+                    // Set the message.
+                    HttpContext.Session.SetString("Messagecolor", "Green");
+                    HttpContext.Session.SetString("Message", Administrator.FirstName + " " + Administrator.LastName + " was successfully added.");
+                    return Redirect("MaintainAdministrator");
+                }
+                catch (DbUpdateException objDbUpdateException)
+                {
+                    // An exception has occurred. Set the message.
+                    HttpContext.Session.SetString("Messagecolor", "Red");
+                    HttpContext.Session.SetString("Message", Administrator.FirstName + " " + Administrator.LastName + " was NOT added. Please report this message to: austin.holbrook@franklincollege.edu." + objDbUpdateException.InnerException.Message);
+                    return Redirect("MaintainAdministrator");
+                }
+            }
+            return Redirect("MaintainAdministrator");
+        }
+
+        public RedirectResult OnPostCancel()
+        {
+            // Set the message.
+            HttpContext.Session.SetString("Messagecolor", "Red");
+            HttpContext.Session.SetString("Message", "The operation was cancelled. No data was affected.");
+            return Redirect("MaintainAdministrator");
+        }
+    }
+}

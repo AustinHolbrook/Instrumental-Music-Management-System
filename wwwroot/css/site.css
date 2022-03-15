@@ -1,0 +1,301 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+a.navbar-brand {
+  white-space: normal;
+  text-align: center;
+  word-break: break-all;
+}
+
+/* Provide sufficient contrast against white background */
+a {
+  color: #0366d6;
+}
+
+body {
+    background-color: #002C5F;
+}
+
+h1{
+    color:white;
+}
+
+/*Custom primary button css.*/
+.btn-primary {
+    color: white;
+    background-color: #002C5F;
+    border-color: black;
+    display: inline-block;
+    border-radius: 7px;
+    text-align: center;
+    font-size: 14px;
+    padding: 8px;
+    width: 125px;
+    transition: all 0.2s;
+    cursor: pointer;
+    margin: 5px;
+}
+
+    .btn-primary:hover {
+        color: #002C5F;
+        background-color: white;
+        border-color: black;
+    }
+
+/*Custom acessory button css.*/
+.btn-accessory {
+    color: white;
+    background-color: #002C5F;
+    border-color: black;
+    display: inline-block;
+    border-radius: 6px;
+    text-align: center;
+    font-size: 14px;
+    padding: 5px;
+    width: 70px;
+    transition: all 0.2s;
+    cursor: pointer;
+    margin: 5px;
+}
+
+    .btn-accessory:hover {
+        color: #002C5F;
+        background-color: white;
+        border-color: black;
+    }
+button:hover:disabled {
+    color: white;
+    background-color: #002C5F;
+    border-color: black;
+    display: inline-block;
+    border-radius: 6px;
+    text-align: center;
+    font-size: 14px;
+    padding: 5px;
+    width: 70px;
+    transition: all 0.2s;
+    cursor: pointer;
+    margin: 5px;
+}
+.btn-clearfilter {
+    color: white;
+    background-color: #002C5F;
+    border-color: black;
+    display: inline-block;
+    border-radius: 6px;
+    text-align: center;
+    font-size: 14px;
+    padding: 5px;
+    width: 85px;
+    transition: all 0.2s;
+    cursor: pointer;
+    margin: 5px;
+}
+
+    .btn-clearfilter:hover {
+        color: #002C5F;
+        background-color: white;
+        border-color: black;
+    }
+
+/*Custom red button css.*/
+.btn-red {
+    color: white;
+    background-color: red;
+    border-color: black;
+    display: inline-block;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 14px;
+    padding: 5px;
+    width: 70px;
+    transition: all 0.2s;
+    cursor: pointer;
+    margin: 5px;
+}
+
+    .btn-red:hover {
+        color: red;
+        background-color: white;
+        border-color: black;
+    }
+
+.checkbox > input {
+    display:inline-flex;
+    height: 19px;
+    width: 19px;
+    border-color:black ;
+    border-radius: 3px;
+    transition-duration: 0.3s;
+    background-color: white;
+    cursor: pointer;
+}
+
+
+.label-formview {
+    font-weight: bold;
+}
+
+.dropdown-formview {
+    display: inline-block;
+    border-radius: 3px;
+    border-color: black;
+    font-size: 14px;
+    padding: 10px;
+    transition: all 0.2s;
+    margin: 5px;
+}
+
+    .dropdown-formview:focus {
+        display: inline-block;
+        border-radius: 3px;
+        border-color: black;
+        font-size: 14px;
+        padding: 10px;
+        transition: all 0.2s;
+        margin: 5px;
+    }
+
+input[type=password] {
+    display: inline-block;
+    border-radius: 3px;
+    border-color: black;
+    font-size: 14px;
+    padding: 10px;
+    transition: all 0.2s;
+    margin: 5px;
+    width: 300px;
+}
+
+    input[type=password]:focus {
+        display: inline-block;
+        border-radius: 3px;
+        border-color: black;
+        font-size: 14px;
+        padding: 10px;
+        transition: all 0.2s;
+        margin: 5px;
+        width: 300px;
+    }
+
+input[type=text] {
+    display: inline-block;
+    border-radius: 3px;
+    border-color: black;
+    font-size: 14px;
+    padding: 10px;
+    transition: all 0.2s;
+    margin: 5px;
+    width: 300px;
+}
+
+    input[type=text]:focus {
+        display: inline-block;
+        border-radius: 4px;
+        border-color: black;
+        font-size: 14px;
+        padding: 10px;
+        transition: all 0.2s;
+        margin: 5px;
+        width: 300px;
+    }
+
+
+textarea {
+    display: inline-block;
+    border-radius: 4px;
+    border-color: black;
+    font-size: 14px;
+    padding: 14px;
+    transition: all 0.2s;
+    margin: 5px;
+    width: 300px;
+}
+
+    textarea:hover {
+        display: inline-block;
+        border-radius: 3px;
+        border-color: black;
+        font-size: 14px;
+        padding: 14px;
+        transition: all 0.2s;
+        margin: 5px;
+        width: 300px;
+    }
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+.radio input[type=radio] {
+    /*Hide original radio button.*/
+    display: none;
+}
+
+.radio label:before {
+    background-color: lightgray;
+    border-radius: 1.00rem;
+    content: "\00a0";
+    display: inline-block;
+    margin-right: 0.25rem;
+    text-align: center;
+    width: 1.50rem;
+}
+
+.radio label:hover:before {
+    background-color: darkgray;
+    transition: color 0.25s ease-in-out, background-color 0.25s ease-in-out, border-color 0.25s ease-in-out, box-shadow 0.25s ease-in-out;
+}
+
+.radio input:checked ~ label:before {
+    /*checked symbol*/
+    content: "\2713";
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  font-size: 14px;
+}
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.border-top {
+  border-top: 1px solid #e5e5e5;
+}
+.border-bottom {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+  font-size: 1rem;
+  line-height: inherit;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  white-space: nowrap;
+  line-height: 60px; /* Vertically center the text there */
+}

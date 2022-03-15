@@ -1,0 +1,57 @@
+﻿@page
+@model _2021IMMS.Pages.Instruments.MaintainInstrumentModel
+
+@{
+    ViewData["Title"] = "MaintainInstrument";
+}
+
+<body>
+    <form method="post">
+        <div class="container jumbotron">
+            <table>
+                <tr>
+                    <td align="right">
+                        <label style="font-weight:bold">Filter: </label>
+                        <input asp-for="Filter" type="text" placeholder="Filter by instrument name." />
+                        <input asp-page-handler="Filter" type="submit" value="Filter" class="btn btn-accessory" />
+                        <input asp-page-handler="ClearFilter" type="submit" value="Clear Filter" class="btn btn-clearfilter" />
+                    </td>
+                </tr>
+            </table>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            <p>
+                                <a asp-page="/Instruments/AddInstrument" class="btn btn-accessory">Add</a>
+                            </p>
+                        </th>
+                        <th><label asp-for="@Model.JoinResultIList[0].Instrument">Instrument</label></th>
+                        <th><label asp-for="@Model.JoinResultIList[0].SerialNumber">Serial Number</label></th>
+                        <th><label asp-for="@Model.JoinResultIList[0].Brand"></label></th>
+                        <th><label asp-for="@Model.JoinResultIList[0].Type"></label></th>
+                        <th><label asp-for="@Model.JoinResultIList[0].Condition"></label></th>
+                        <th><label asp-for="@Model.JoinResultIList[0].AdditionalParts">Additional Parts</label></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.JoinResultIList)
+                    {
+                        <tr>
+                            <td>
+                                <a asp-page="/Instruments/ModifyInstrument" asp-route-intInstrumentId="@item.InstrumentId" class="btn btn-accessory">Modify</a>
+                                <a asp-page="/Instruments/DeleteInstrument" asp-route-intInstrumentId="@item.InstrumentId" onclick="return confirm('Are you sure you want to delete this item? Click OK to delete it. Click Cancel to keep it.')" class="btn btn-red">Delete</a>
+                            </td>
+                            <td><label>@item.Instrument</label></td>
+                            <td><label>@item.SerialNumber</label></td>
+                            <td><label>@item.Brand</label></td>
+                            <td><label>@item.Type</label></td>
+                            <td><label>@item.Condition</label></td>
+                            <td><label>@item.AdditionalParts</label></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </form>
+</body>

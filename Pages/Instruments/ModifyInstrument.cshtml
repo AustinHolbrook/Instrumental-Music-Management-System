@@ -1,0 +1,91 @@
+﻿@page
+@model _2021IMMS.Pages.Instruments.ModifyInstrumentModel
+
+@{
+    ViewData["Title"] = "ModifyInstrument";
+}
+
+<body>
+    <form method="post">
+        <input asp-for="Instrument.InstrumentId" type="hidden" />
+        <div class="container jumbotron">
+            <table>
+                <tr>
+                    <td><label asp-for="Instrument.BrandId" class="label-formview"></label></td>
+                    <td>
+                        <select asp-for="Instrument.BrandId" asp-items="@Model.BrandSelectList" class="dropdown-formview">
+                            <option label="Select an option"></option>
+                        </select>
+                        <span asp-validation-for="Instrument.BrandId" class="text-danger" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label asp-for="Instrument.Type" class="label-formview"></label>
+                    </td>
+                    <td>
+                        <select asp-for="Instrument.Type" class="dropdown-formview">
+                            <option label="Select an option"></option>
+                            <option value="C">Concert</option>
+                            <option value="M">Marching</option>
+                            <option value="S">String</option>
+                        </select>
+                        <span asp-validation-for="Instrument.Type" class="text-danger" />
+                    </td>
+                </tr>
+                <tr>
+                    <td><label asp-for="Instrument.Instrument1" class="label-formview"></label></td>
+                    <td>
+                        <input asp-for="Instrument.Instrument1" />
+                        <span asp-validation-for="Instrument.Instrument1" class="text-danger"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label asp-for="Instrument.SerialNumber" class="label-formview"></label></td>
+                    <td>
+                        <input asp-for="Instrument.SerialNumber" />
+                        <span asp-validation-for="Instrument.SerialNumber" class="text-danger"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label asp-for="Instrument.Condition" class="label-formview"></label></td>
+                    <td>
+                        <select asp-for="Instrument.Condition" class="dropdown-formview">
+                            <option label="Select an option"></option>
+                            <option value="G">Good</option>
+                            <option value="F">Fair</option>
+                            <option value="P">Poor</option>
+                        </select>
+                        <span asp-validation-for="Instrument.Condition" class="text-danger" />
+                    </td>
+                </tr>
+                <tr>
+                    <td><label asp-for="Instrument.Description" class="label-formview"></label></td>
+                    <td>
+                        <textarea asp-for="Instrument.Description"></textarea>
+                        <span asp-validation-for="Instrument.Description" class="text-danger"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label asp-for="Instrument.AdditionalParts" class="label-formview"></label>
+                    </td>
+                    <td>
+                        <textarea asp-for="Instrument.AdditionalParts"></textarea>
+                        <span asp-validation-for="Instrument.AdditionalParts" class="text-danger" />
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <input asp-page-handler="Modify" class="btn btn-accessory" type="submit" value="Modify" />
+                        <input asp-page-handler="Cancel" class="btn btn-red" type="submit" value="Cancel" formnovalidate />
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </form>
+</body>
+@section Scripts{
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

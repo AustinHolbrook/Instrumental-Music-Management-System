@@ -1,0 +1,32 @@
+﻿@page
+@model _2021IMMS.Pages.Brands.AddBrandModel
+
+@{
+    ViewData["Title"] = "AddBrand";
+}
+
+<body>
+    <form method="post">
+        <div class="container jumbotron">
+            <table>
+                <tr>
+                    <td><label asp-for="Brand.Brand1" class="label-formview"></label></td>
+                    <td>
+                        <input asp-for="Brand.Brand1" />
+                        <span asp-validation-for="Brand.Brand1" class="text-danger"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <input asp-page-handler="Add" class="btn btn-accessory" type="submit" value="Add" />
+                        <input asp-page-handler="Cancel" class="btn btn-red" type="submit" value="Cancel" formnovalidate />
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </form>
+</body>
+@section Scripts{
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

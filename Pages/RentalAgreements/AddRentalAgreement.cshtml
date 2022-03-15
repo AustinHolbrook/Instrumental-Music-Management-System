@@ -1,0 +1,59 @@
+﻿@page
+@model _2021IMMS.Pages.RentalAgreements.AddRentalAgreementModel
+
+@{
+    ViewData["Title"] = "AddRentalAgreement";
+}
+
+<body>
+    <form method="post">
+        <div class="container jumbotron">
+            <table>
+                <tr>
+                    <td><label asp-for="RentalAgreement.StudentId" class="label-formview"></label></td>
+                    <td>
+                        <select asp-for="RentalAgreement.StudentId" asp-items="@Model.StudentSelectList
+                                " class="dropdown-formview">
+                            <option label="Select an option"></option>
+                        </select>
+                        <span asp-validation-for="RentalAgreement.StudentId" class="text-danger" />
+                    </td>
+                </tr>
+                <tr>
+                    <td><label asp-for="RentalAgreement.InstrumentId" class="label-formview"></label></td>
+                    <td>
+                        <select asp-for="RentalAgreement.InstrumentId" asp-items="@Model.InstrumentSelectList" class="dropdown-formview">
+                            <option label="Select an option"></option>
+                        </select>
+                        <span asp-validation-for="RentalAgreement.InstrumentId" class="text-danger" />
+                    </td>
+                </tr>
+                <tr>
+                    <td><label asp-for="RentalAgreement.Date" class="label-formview"></label></td>
+                    <td>
+                        <input asp-for="RentalAgreement.Date" type="date" ID="datDate"  />
+                        <span asp-validation-for="RentalAgreement.Date" class="text-danger" />
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <input asp-page-handler="Add" class="btn btn-accessory" type="submit" value="Add" />
+                        <input asp-page-handler="Cancel" class="btn btn-red" type="submit" value="Cancel" formnovalidate />
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </form>
+</body>
+<script type="text/javascript">
+    onload = SetDefaultDate();
+function SetDefaultDate() {
+    datDate = new Date().toISOString().substr(0, 10);
+    document.getElementById("datDate").value = datDate;
+}
+</script>
+
+@section Scripts{
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

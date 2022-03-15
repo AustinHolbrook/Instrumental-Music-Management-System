@@ -1,0 +1,52 @@
+﻿@page
+@model _2021IMMS.Pages.RentalAgreements.StudentRentalAgreementsModel
+
+@{
+    ViewData["Title"] = "StudentRentalAgreeements";
+}
+
+<body>
+    <form method="post">
+        <div class="container jumbotron">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th><label asp-for="@Model.JoinResultIList[0].Instrument">Instrument</label></th>
+                        <th><label asp-for="@Model.JoinResultIList[0].SerialNumber">Serial Number</label></th>
+                        <th><label asp-for="@Model.JoinResultIList[0].RenterSignature">Renter Signature</label></th>
+                        <th><label asp-for="@Model.JoinResultIList[0].FacultySignature">Faculty Signature</label></th>
+                        <th><label asp-for="@Model.JoinResultIList[0].Date"></label></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.JoinResultIList)
+                    {
+                        <tr>
+                            @if (item.RenterSignature != null)
+                            {
+                                <td>
+                                    <button disabled="disabled" asp-page="/RentalAgreements/SignRentalAgreement" asp-route-intRentalAgreementId="@item.RentalAgreementId" class="btn btn-accessory">Signed</button>
+                                </td>
+                            }
+                            else
+                            {
+                                <td>
+                                    <a asp-page="/RentalAgreements/SignRentalAgreement" asp-route-intRentalAgreementId="@item.RentalAgreementId" class="btn btn-accessory">Sign</a>
+                                </td>
+                            }
+                            @*<td>
+                                <a asp-page="/RentalAgreements/SignRentalAgreement" asp-route-intRentalAgreementId="@item.RentalAgreementId" class="btn btn-accessory">Sign</a>
+                            </td>*@
+                            <td><label>@item.Instrument </label></td>
+                            <td><label>@item.SerialNumber</label></td>
+                            <td><label>@item.RenterSignature</label></td>
+                            <td><label>@item.FacultySignature</label></td>
+                            <td><label>@item.Date.ToString("MM/dd/yyyy")</label></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </form>
+</body>

@@ -1,0 +1,55 @@
+﻿@page
+@model _2021IMMS.Pages.Administrators.MaintainAdministratorModel
+
+@{
+    ViewData["Title"] = "MaintainAdministrator";
+}
+
+<body>
+    <form method="post">  
+        <div class="container jumbotron">
+            <table>
+                <tr>
+                    <td align="right">
+                        <label style="font-weight:bold">Filter: </label>
+                        <input asp-for="Filter" type="text" placeholder="Filter by first or last name."/>
+                        <input asp-page-handler="Filter" type="submit" value="Filter" class="btn btn-accessory"  />
+                        <input asp-page-handler="ClearFilter" type="submit" value="Clear Filter" class="btn btn-clearfilter" />
+                    </td>
+                </tr>
+            </table>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            <p>
+                                <a asp-page="/Administrators/AddAdministrator" class="btn btn-accessory">Add</a>
+                            </p>
+                        </th>
+                        <th><label asp-for="@Model.AdministratorIList[0].LastName"></label></th>
+                        <th><label asp-for="@Model.AdministratorIList[0].FirstName"></label></th>
+                        <th><label asp-for="@Model.AdministratorIList[0].MiddleInitial"></label></th>
+                        <th><label asp-for="@Model.AdministratorIList[0].Phone"></label></th>
+                        <th><label asp-for="@Model.AdministratorIList[0].Status"></label></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.AdministratorIList)
+                    {
+                    <tr>
+                        <td>
+                            <a asp-page="/Administrators/ModifyAdministrator" asp-route-intAdministratorId="@item.AdministratorId" class="btn btn-accessory">Modify</a>
+                            <a asp-page="/Administrators/DeleteAdministrator" asp-route-intAdministratorId="@item.AdministratorId" onclick="return confirm('Are you sure you want to delete this item? Click OK to delete it. Click Cancel to keep it.')" class="btn btn-red">Delete</a>
+                        </td>
+                        <td><label>@item.LastName</label></td>
+                        <td><label>@item.FirstName</label></td>
+                        <td><label>@item.MiddleInitial</label></td>
+                        <td><label>@item.Phone</label></td>
+                        <td><label>@item.Status</label></td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </form>
+</body>

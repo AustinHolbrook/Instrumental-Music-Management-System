@@ -1,0 +1,75 @@
+﻿@page 
+@model _2021IMMS.Pages.LoginModel
+@{
+    ViewData["Title"] = "Login";
+}
+<body>
+    <form method="post">
+        <div class="container jumbotron">
+            <table>
+                <tr>
+                    <td>
+                        <div class="radio">
+                            <input asp-for="radUser" id="radFaculty" type="radio" value="Faculty" />
+                            <label for="radFaculty">Faculty &nbsp;</label>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="radio">
+                            <input asp-for="radUser" id="radStudentWorker" type="radio" value="StudentWorker" />
+                            <label for="radStudentWorker">Student Worker &nbsp;</label>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="radio">
+                            <input asp-for="radUser" id="radStudent" type="radio" value="Student" />
+                            <label for="radStudent">Student &nbsp;</label>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            <br/>
+            <table>
+                <tr>
+                    <td>
+                        <label asp-for="EmailAddress" class="font-weight-bold">Email Address</label>
+                    </td>
+                    <td>
+                        <input asp-for="EmailAddress" type="text" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label asp-for="Password" class="font-weight-bold"></label>
+                    </td>
+                    <td>
+                        <input asp-for="Password" type="password" />
+                    </td>
+                </tr>
+            </table>
+            <br/>
+            <table>
+                <tr>
+                    <td>
+                        <input asp-page-handler="Login" class="btn-primary" type="submit" value="Login" />
+                    </td>
+                    <td>
+                        <input asp-page-handler="ForgotPassword" class="btn-primary" formnovalidate type="submit" value="Forgot Password" />
+                    </td>
+                </tr>
+            </table>  
+            <br/>
+            <table>
+                <tr>
+                    <td>
+                        <a asp-page="RegisterStudent">New student? Register here.</a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </form>
+</body>
+
+@section Scripts{
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }

@@ -1,0 +1,131 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - _2021IMMS</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container">
+                <a class="navbar-brand" asp-area=""><img src="~/images/IMMS_Logo.png" height="123" width="300" /></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                    <ul class="navbar-nav flex-grow-1">
+                        @if ((String)ViewData["Status"] == "Faculty")
+                        {
+                            <li class="dropdown nav-item">
+                                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"> Maintain<span class="caret" /></button>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a class="nav-link text-dark" asp-area="" asp-page="/Administrators/MaintainAdministrator">Administrators</a>
+                                    </li>
+                                    <li>
+                                        <a class="nav-link text-dark" asp-area="" asp-page="/Students/MaintainStudent">Students</a>
+                                    </li>
+                                    <li>
+                                        <a class="nav-link text-dark" asp-area="" asp-page="/Pieces/MaintainPiece">Pieces</a>
+                                    </li>
+                                    <li>
+                                        <a class="nav-link text-dark" asp-area="" asp-page="/Brands/MaintainBrand">Brands</a>
+                                    </li>
+                                    <li>
+                                        <a class="nav-link text-dark" asp-area="" asp-page="/Instruments/MaintainInstrument">Instruments</a>
+                                    </li>
+                                    <li>
+                                        <a class="nav-link text-dark" asp-area="" asp-page="/RentalAgreements/MaintainRentalAgreement">Rental Agreements</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+                                <ul class="navbar-nav ml-auto">
+                                    <li class="nav-item">
+                                        <a class="btn btn-primary" asp-area="" asp-page="/Initialize"> Log Out</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        }
+                        @if ((String)ViewData["Status"] == "Student Worker")
+                        {
+                            <li class="dropdown nav-item">
+                                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Maintain<span class="caret" /></button>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a class="nav-link text-dark" asp-area="" asp-page="/Pieces/MaintainPiece">Maintain Pieces</a>
+                                    </li>
+                                    <li>
+                                        <a class="nav-link text-dark" asp-area="" asp-page="/Brands/MaintainBrand">Maintain Brands</a>
+                                    </li>
+                                    <li>
+                                        <a class="nav-link text-dark" asp-area="" asp-page="/Instruments/MaintainInstrument">Maintain Instruments</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+                                <ul class="navbar-nav ml-auto">
+                                    <li class="nav-item">
+                                        <a class="btn btn-primary" asp-area="" asp-page="/Initialize">Log Out</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        }
+                        @if ((String)ViewData["Status"] == "Student")
+                        {
+                            <li class="nav-item">
+                                <a class="btn btn-primary" asp-area="" asp-page="RentalAgreements/StudentRentalAgreements">Sign Rental Agreements</a>
+                            </li>
+                            <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+                                <ul class="navbar-nav ml-auto">
+                                    <li class="nav-item">
+                                        <a class="btn btn-primary" asp-area="" asp-page="/Initialize">Log Out</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        }
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container" style="font-size: 30px">
+        <label style="font-size: 1.25rem; color: white;">@ViewData["Page"] | </label>
+        <label style="font-size: 1.25rem; color: white;">@ViewData["User"] | </label>
+        <label style="font-size: 1.25rem; color: white;">@ViewData["Status"] | </label>
+        <label style="font-size: 1.25rem; color:@ViewData["MessageColor"]">@ViewData["Message"]</label>
+    </div>
+
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container" style="color:black">
+            <label style="color:white;">Server: </label>
+          @*--Need to update this to be dynamic-----------*@
+            <label style="color:white;">localhost (Not Dynamic)</label>
+            <label style="color:white;">Version: </label>
+            <label style="color:white;"> 1.0 beta </label>
+            <label style="color:white;">Date: </label>
+            <label style="color:white;"> @DateTime.Now.ToShortDateString() </label>
+            <label style="color:white;">Contact: </label>
+            <label style="color:white;"> If you have questions or experience problems with this website, please contact rbeasley@franklincollege.edu. </label>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
